@@ -1,7 +1,9 @@
 $background-color: #eee;
 
-html, body {
-  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+html,
+body {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 #root {
@@ -10,4 +12,54 @@ html, body {
 
 .app {
   background-color: $background-color;
+}
+
+.greyed::before {
+  content: "";
+  z-index: 1;
+  position: fixed;
+  inset: 0;
+  background-color: black;
+  opacity: 0.3;
+}
+
+.results {
+  position: fixed;
+  inset: 45% 3rem 45% 3rem;
+  margin: auto;
+  text-align: center;
+  max-width: 500px;
+
+  z-index: 2;
+  box-shadow: 0 2px 5px -1px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: space-between;
+
+  background-color: white;
+  border: solid black 2px;
+  border-radius: 10px;
+
+  padding: 1rem;
+
+  span {
+    margin: auto 0.5rem;
+  }
+
+  & > * {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.question,
+.check {
+  padding: 2rem 1rem;
+
+  &:not(:last-child) {
+    border-bottom: solid #bbb 1px;
+  }
+}
+
+.answers {
+  flex-wrap: wrap;
 }
