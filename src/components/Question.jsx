@@ -26,12 +26,12 @@ function Question(props) {
   });
 
   return (
-    <Row className="question mb-5">
+    <div className="question">
       <p className="question--q">{decodeURIComponent(props.q)}</p>
       <Stack direction="horizontal" gap={2} className="answers">
         {answerElements}
       </Stack>
-    </Row>
+    </div>
   );
 }
 

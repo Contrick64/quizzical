@@ -101,8 +101,21 @@ function App() {
 
   return (
     <Container className="m-auto align-self-center">
-      <Row className="app p-3 py-4">
-        <Col lg={5}>
+      <Row>
+        <Col md={8} className="app offset-md-2">
+          {gamePhase === "end" && (
+            <div className="results">
+              {numberCorrect === quizData.length && <h1>You Win!</h1>}
+              <span>
+                You got {numberCorrect}/{quizData.length} question
+                {quizData.length !== 1 && "s"} correct.
+              </span>
+              <Button as="button" onClick={newQuiz}>
+                {" "}
+                Play Again
+              </Button>
+            </div>
+          )}
           {(() => {
             if (gamePhase === "start") {
               return (
@@ -120,33 +133,18 @@ function App() {
                     questions={quizData}
                     chooseAnswer={chooseAnswer}
                     end={gamePhase === "end"}
-                  />
-                  {gamePhase === "quiz" && (
-                    <Button className="" onClick={checkAnswers}>
-                      Check
-                    </Button>
-                  )}
-                  {gamePhase === "end" && (
-                    <Button as="button" onClick={newQuiz}>
-                      {" "}
-                      Play Again
-                    </Button>
-                  )}
+                  >
+                    {gamePhase === "quiz" && (
+                      <div className="check">
+                        <Button onClick={checkAnswers}>Check</Button>
+                      </div>
+                    )}
+                  </Questions>
                 </div>
               );
             }
           })()}
         </Col>
-        {gamePhase === "end" && (
-          <div className="results">
-            <hr />
-            {numberCorrect === quizData.length && <h1>You Win!</h1>}
-            <p>
-              You got {numberCorrect}/{quizData.length} question
-              {quizData.length !== 1 && "s"} correct.
-            </p>
-          </div>
-        )}
       </Row>
     </Container>
   );

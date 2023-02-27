@@ -19,7 +19,12 @@ function Questions(props) {
     );
   });
 
-  return <Col className="questions">{questionElements}</Col>;
+  return (
+    <Col className={`questions${props.end ? " greyed" : ""}`}>
+      {questionElements}
+      {props.children}
+    </Col>
+  );
 }
 
 export default Questions;
